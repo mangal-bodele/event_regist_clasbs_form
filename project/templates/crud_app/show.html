@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+ <table class="mt-5 m-auto border bg-info border-3 p-3 col-8 text-center">
+     <thead class="p-3 bg-warning text-success">
+        <tr>
+            <th>ID</th>
+            <th>FIRST</th>
+            <th>LAST</th>
+            <th>MOBILE</th>
+            <th>VENUE</th>
+            <th>DATE</th>
+            <th>ADDRESS</th>
+            <th colspan="2">ACTION</th>
+        </tr>
+
+     </thead>
+     <tbody>
+            {% for event in events %}
+                <tr>
+                    <td>{{ event.id }}</td>
+                    <td>{{ event.fname }}</td>
+                    <td>{{ event.lname }}</td>
+                    <td>{{ event.mobile_number }}</td>
+                    <td>{{ event.venue }}</td>
+                    <td>{{ event.date }}</td>
+                    <td>{{ event.address }}</td>
+                    <td>
+                        <a href="{% url 'update_url' event.id %}">
+                            <button class="btn btn-danger"><i class="bi bi-pencil-square"></i>&nbspUpdate</button>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{% url 'delete_url' event.id %}">
+                                    <button class="btn btn-danger"><i class="bi bi-pencil-square"></i>&nbspDelete</button>
+                        </a>
+                    </td>
+                {% endfor %}
+            </tr>
+     </tbody>
+ </table>
+</body>
+</html>
